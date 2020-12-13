@@ -15,11 +15,12 @@ import { MoviesService } from './movies.service';
 
 @Controller('movies')
 export class MoviesController {
-  constructor(readonly moviesServices: MoviesService) {}
+  constructor(private readonly moviesServices: MoviesService) {}
   @Get()
   getAll(): Movie[] {
     return this.moviesServices.getAll();
   }
+
   @Get('search')
   search(@Query('year') searchingYear: string) {
     return `We are searching for a movie made after: ${searchingYear}`;
